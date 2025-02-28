@@ -77,6 +77,33 @@ public class App {
         int magicNumber = getMeARandomNumber();
         System.out.println("The magic number is "+ magicNumber + ". Shh! Don't tell anyone");
         Scanner reader = new Scanner(System.in);
+        int guesscount = 0;
+        System.out.println("Enter a guess:");
+        while (true) {
+            int guess = Integer.valueOf(reader.nextLine());
+            if (guess<0 || guess>10) {
+                System.out.println("The number has to be between 1 and 10. I won't count this, just know not to do that. >:(");
+            } else if (guess == magicNumber) {
+                System.out.println("Good job! You got the number. :)");
+                guesscount++;
+                if (guesscount == 1) {
+                    System.out.println("You took " + guesscount + " guess. WOW! :0");
+                } else if (guesscount == 2 || guesscount == 3) {
+                    System.out.println("You took " + guesscount + " guesses. Not too bad! :p");
+                } else {
+                    System.out.println("You took " + guesscount + " guesses. Dang! >:0");
+                }
+                break;
+            } else {
+                if (guess + 2 == magicNumber || guess + 1 == magicNumber || guess - 2 == magicNumber || guess - 1 == magicNumber) {
+                    System.out.println("You're close, keep trying! :>");
+                } else if (guess >= magicNumber + 5 || guess <= magicNumber -5) {
+                    System.out.println("Whoa, you're wayyy off. Try again. :(");
+                } else {
+                    System.out.println("Wrong number, try again. :'(");
+                } guesscount++;
+            }
+        }
     }
 
 
